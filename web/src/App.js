@@ -29,7 +29,7 @@ function SearchBox(props) {
 
 function SearchResults(props) {
   console.log(props);
-  return (<div>
+  return (<div className="results">
     {props.results.map(element => {
       return <p key={element.url} className="searchResult">
         <a href={element.url}>{element.url}</a> ({element.score})</p>
