@@ -1,6 +1,16 @@
 .App {
   text-align: center;
 }
+body {
+  background-color: #0D1821;
+  color: #DECDF5;
+  font-family: monospace;
+  font-size: 14px;
+}
+
+a {
+  color: #ffbf46;
+}
 
 textarea {
   width: 400px;
@@ -12,6 +22,10 @@ textarea {
   border-radius: 5px;
   resize: none;
   padding: 10px;
+  background-color: #0D1821;
+  color: #f8f1ff;
+  font-family: monospace;
+  border-color: #3e8989;
 }
 
 .searchResult {
