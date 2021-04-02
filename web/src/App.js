@@ -15,15 +15,15 @@ function SearchBox(props) {
   }, [props.query]);
 
   const submit = () => {
-    if (!inprogressQuery.includes("<mask>")) {
-      window.alert("query must contain <mask>");
+    if (!inprogressQuery.includes("*")) {
+      window.alert("query must contain *");
       return;
     }
-    props.setQuery(inprogressQuery);
+    props.setQuery(inprogressQuery.replace("*", "<mask>"));
   }
 
   return (<div>
-    <textarea value={inprogressQuery} onChange={handleChange} onKeyUp={(e) => (e.key === "Enter" ? submit() : 0)}/>
+    <textarea placeholder="e.g. The best search engine is *" value={inprogressQuery} onChange={handleChange} onKeyUp={(e) => (e.key === "Enter" ? submit() : 0)}/>
   </div>);
 }
 
@@ -47,7 +47,7 @@ function App() {
       return;
     }
     console.log("do search");
-    setQuery(q);
+    setQuery(q.replace("<mask>","*"));
     let params = new URLSearchParams();
     params.set('q', q);
     const url = "https://exa.sh/api/search?" + params.toString();
