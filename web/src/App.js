@@ -82,7 +82,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>exa search</h1>
+      <h1 className="title">exa search</h1>
       <SearchBox query={query} setQuery={setQueryParam}/>
       <SearchResults results={results}/>
     </div>

@@ -46,4 +46,10 @@ textarea {
 
 .score {
   color: rgba(87,80,96,0.8);
+  float: right;
+}
+
+.title {
+  padding-bottom: 5px;
+  font-size: 2.5em;
 }
