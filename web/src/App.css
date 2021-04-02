@@ -13,7 +13,7 @@ a {
 }
 
 textarea {
-  width: 400px;
+  width: 500px;
   height: 50px;
   font-family: serif;
   border-width: 1px;
@@ -26,6 +26,9 @@ textarea {
   color: #f8f1ff;
   font-family: monospace;
   border-color: #3e8989;
+  /* border-color: #DECDF5; */
+  font-weight: bold;
+  font-size: 1.2em;
 }
 
 .searchResult {
