@@ -32,7 +32,7 @@ function SearchResults(props) {
   return (<div className="results">
     {props.results.map(element => {
       return <p key={element.url} className="searchResult">
-        <a href={element.url}>{element.url}</a> ({element.score})</p>
+        <a href={element.url}>{element.url}</a> <span class="score">({element.score})</span></p>
     })}
   </div>);
 }
