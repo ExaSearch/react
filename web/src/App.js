@@ -7,7 +7,7 @@ function SearchBox(props) {
   const [inprogressQuery, setInprogressQuery] = useState(props.query);
 
   const handleChange = (e) => {
-    setInprogressQuery(e.target.value.trim().replace(/\n|\r/g, ""));
+    setInprogressQuery(e.target.value.replace(/\n|\r/g, ""));
   }
 
   useEffect(() => {
@@ -31,7 +31,7 @@ function SearchResults(props) {
   console.log(props);
   return (<div>
     {props.results.map(element => {
-      return <p key={element.url}>
+      return <p key={element.url} className="searchResult">
         <a href={element.url}>{element.url}</a> ({element.score})</p>
     })}
   </div>);
@@ -43,6 +43,9 @@ function App() {
   const [results, setResults] = useState([]);
 
   const searchAndSetQuery = (q) => {
+    if (!q.includes("<mask>")) {
+      return;
+    }
     console.log("do search");
     setQuery(q);
     let params = new URLSearchParams();
@@ -65,6 +68,7 @@ function App() {
     let search = window.location.search;
     let params = new URLSearchParams(search);
     let foo = params.get('q');
+    if (!foo) return;
     searchAndSetQuery(foo);
   }, [])
 

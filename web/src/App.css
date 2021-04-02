@@ -1,3 +1,19 @@
 .App {
   text-align: center;
 }
+
+textarea {
+  width: 400px;
+  height: 50px;
+  font-family: serif;
+  border-width: 1px;
+  border-style: solid;
+  outline: none;
+  border-radius: 5px;
+  resize: none;
+  padding: 10px;
+}
+
+.searchResult {
+  padding: 5px;
+}
