@@ -1,0 +1,23 @@
+.layout {
+    margin-top: 100px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+}
+
+.title {
+    font-size: 30px;
+    color: #4A4A4A;
+    margin-right: 8px;
+    font-weight: 400;
+}
+
+.instructions {
+    line-height: 28px;
+    font-size: 19px;
+    color: #727170;
+    margin-top: 20px;
+    font-weight: normal;
+}

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
 .App {
   text-align: center;
 }
@@ -8,34 +9,14 @@
   text-align: left;
 }
 body {
-  background-color: #0D1821;
-  color: #DECDF5;
-  font-family: monospace;
+  background-color: #EDEBEB;
+  color: #727170;
+  font-family: 'Inconsolata';
   font-size: 14px;
 }
 
 a {
   color: #ffbf46;
-}
-
-textarea {
-  max-width: 680px;
-  width: 100%;
-  height: 50px;
-  font-family: serif;
-  border-width: 1px;
-  border-style: solid;
-  outline: none;
-  border-radius: 5px;
-  resize: none;
-  padding: 10px;
-  background-color: #0D1821;
-  color: #f8f1ff;
-  font-family: monospace;
-  border-color: #3e8989;
-  /* border-color: #DECDF5; */
-  /* font-weight: bold; */
-  font-size: 1.2em;
 }
 
 .searchResult {
@@ -49,7 +30,7 @@ textarea {
   float: right;
 }
 
-.title {
+/* .title {
   padding-bottom: 5px;
   font-size: 2.5em;
-}
+} */
