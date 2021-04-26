@@ -2,6 +2,7 @@ import React from 'react';
 import BGCard from './Card';
 import './Components.css';
 import { useCallback, useRef, useEffect, useState } from "react";
+import Header from './Layout/Header';
 
 function SearchBox(props) {
 
@@ -30,15 +31,15 @@ function SearchBox(props) {
     );
   }
   
-//   function SearchResults(props) {
-//     console.log(props);
-//     return (<div className="results">
-//       {props.results.map(element => {
-//         return <p key={element.url} className="searchResult">
-//           <a href={element.url}>{element.url}</a> <span class="score">({element.score})</span></p>
-//       })}
-//     </div>);
-//   }
+  function SearchResults(props) {
+    console.log(props);
+    return (<div className="results">
+      {props.results.map(element => {
+        return <p key={element.url} className="searchResult">
+          <a href={element.url}>{element.url}</a> <span class="score">({element.score})</span></p>
+      })}
+    </div>);
+  }
 
 function Terminal(props) {
     const [query, setQuery] = useState("");
@@ -82,9 +83,11 @@ function Terminal(props) {
     searchAndSetQuery(q);
   }
     return(
-        <BGCard style={{width: '900px', height: '200px',  margin: '30px auto 0px auto'}}>
-            <SearchBox query={query} setQuery={setQueryParam}/>
-            {/* <SearchResults results={results}/>     */}
+        <BGCard style={{width: '1200px', height: '850px',  margin: '30px 20px 0px 30px'}}>
+          <Header style={{margin: '24px 0px 0px 28px' }} />
+          <SearchBox query={query} setQuery={setQueryParam}/>
+          <div className='divider'></div>
+          <SearchResults results={results}/>    
         </BGCard>
     );
 }

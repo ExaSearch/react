@@ -3,16 +3,18 @@
   text-align: center;
 }
 .results {
-  padding-top: 10px;
-  max-width: 700px;
-  margin: auto;
+  max-width: 90%;
+  margin: 20px 20px 20px 28px;
   text-align: left;
+  overflow-y: scroll;
+  height: 65%;
 }
 body {
   background-color: #EDEBEB;
   color: #727170;
   font-family: 'Inconsolata';
   font-size: 14px;
+  overflow: hidden;
 }
 
 a {

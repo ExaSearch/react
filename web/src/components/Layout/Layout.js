@@ -6,10 +6,10 @@ import './layout.css';
 function Layout(props) {
     return(
         <div className="layout">
-            <Header/>
+            {/* <Header/>
             <div className="instructions">
             Give us a prompt with a * in it, we’ll predict which URLs best fill that blank
-            </div>
+            </div> */}
             <Terminal/>
         </div>
         

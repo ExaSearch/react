@@ -22,7 +22,7 @@ textarea {
     color: #727272;
     vertical-align: middle;
     margin: 14px 20px 0px 70px;
-    width: 100%;
+    width: 90%;
     height: 100px;
     outline: none;
     resize: none;
@@ -35,15 +35,22 @@ textarea {
   .textAreaPrefix {
     position: relative;
     display: block;
+    height: 200px;
   }
   
   .textAreaPrefix::before {
     content: 'input:';
     position: absolute;
     top: 24px;
-    left: 24px;
+    left: 28px;
     z-index: 99;
     font-size: 1.2em;
     font-weight: 500;
     color: black;
+  }
+
+  .divider {
+    height: 1px;
+    width:100%;
+    background-color: #CDCDCD;
   }

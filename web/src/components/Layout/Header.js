@@ -4,7 +4,7 @@ import Tag from '../Tag';
 
 function Header(props) {
     return(
-    <div className="header">
+    <div style={props.style} className="header">
         <div className="title">
             Exa Search
         </div>
