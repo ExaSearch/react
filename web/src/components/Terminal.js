@@ -33,11 +33,15 @@ function SearchBox(props) {
   
   function SearchResults(props) {
     console.log(props);
-    return (<div className="results">
+    return (
+    <div className="resultsContainer">
+      <div className="outputText">output:</div>
+      <div className="resultsList">
       {props.results.map(element => {
         return <p key={element.url} className="searchResult">
           <a href={element.url}>{element.url}</a> <span class="score">({element.score})</span></p>
       })}
+      </div>
     </div>);
   }
 
@@ -85,6 +89,10 @@ function Terminal(props) {
     return(
         <BGCard style={{width: '1200px', height: '850px',  margin: '30px 20px 0px 30px'}}>
           <Header style={{margin: '24px 0px 0px 28px' }} />
+          <div className="instructions">
+            Give us a prompt with a * in it, we’ll predict which URLs best fill that blank
+          </div>
+          {/* <div className='divider2'></div> */}
           <SearchBox query={query} setQuery={setQueryParam}/>
           <div className='divider'></div>
           <SearchResults results={results}/>    

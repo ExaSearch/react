@@ -15,9 +15,10 @@
 }
 
 .instructions {
+    text-align: left;
     line-height: 28px;
-    font-size: 19px;
+    font-size: 1.2em;
     color: #727170;
-    margin-top: 20px;
+    margin: 10px 0px 0px 28px;
     font-weight: normal;
 }

@@ -2,13 +2,20 @@
 .App {
   text-align: center;
 }
-.results {
-  max-width: 90%;
+.resultsContainer {
+  display: flex;
+  max-width: 95%;
   margin: 20px 20px 20px 28px;
   text-align: left;
-  overflow-y: scroll;
-  height: 65%;
 }
+
+.resultsList {
+  margin-left: 10px;
+  overflow-y: scroll;
+  width: 100%;
+  max-height: 495px;
+}
+
 body {
   background-color: #EDEBEB;
   color: #727170;
@@ -18,13 +25,24 @@ body {
 }
 
 a {
-  color: #ffbf46;
+  /* color: #ffbf46; */
 }
 
 .searchResult {
-  padding: 5px;
+  margin-top: 0px;
+  margin-bottom: 20px;
   padding-left: 0;
   padding-right: 0;
+  font-size: 1.2em;
+}
+
+.outputText {
+  /* position: absolute; */
+  top: 24px;
+  left: 28px;
+  font-size: 1.2em;
+  font-weight: 500;
+  color: black;
 }
 
 .score {

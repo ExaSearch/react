@@ -21,7 +21,7 @@ textarea {
     background :rgba(0, 0, 0, 0.00);
     color: #727272;
     vertical-align: middle;
-    margin: 14px 20px 0px 70px;
+    margin: 0px 20px 0px 70px;
     width: 90%;
     height: 100px;
     outline: none;
@@ -41,7 +41,7 @@ textarea {
   .textAreaPrefix::before {
     content: 'input:';
     position: absolute;
-    top: 24px;
+    top: 10px;
     left: 28px;
     z-index: 99;
     font-size: 1.2em;
@@ -53,4 +53,12 @@ textarea {
     height: 1px;
     width:100%;
     background-color: #CDCDCD;
+  }
+  .divider2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 1px;
+    width: 95%;
+    background-color: #CDCDCD;
+    margin-left: 28px;
   }
