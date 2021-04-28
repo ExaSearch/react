@@ -2,8 +2,10 @@ import React from 'react';
 import BGCard from './Card';
 import './Components.css';
 import { useCallback, useRef, useEffect, useState } from "react";
+import { useHistory } from 'react-router-dom';
 
-function SearchBox(props) {
+  function SearchBox(props) {
+    let history = useHistory();
 
     const [inprogressQuery, setInprogressQuery] = useState(props.query);
   
@@ -21,6 +23,11 @@ function SearchBox(props) {
         return;
       }
       props.setQuery(inprogressQuery.replace("*", "<mask>"));
+      history.push({
+        pathname: '/search',
+        search: '?query=abc',
+        state: { query: inprogressQuery.replace("*", "<mask>") }
+      });
     }
   
     return (
