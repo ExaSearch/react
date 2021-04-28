@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+
 .App {
   text-align: center;
+  height: 100%;
 }
 .resultsContainer {
   display: flex;
@@ -16,16 +18,17 @@
   max-height: 495px;
 }
 
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
 body {
   background-color: #EDEBEB;
   color: #727170;
   font-family: 'Inconsolata';
   font-size: 14px;
   overflow: hidden;
-}
-
-a {
-  /* color: #ffbf46; */
 }
 
 .searchResult {

@@ -1,13 +1,18 @@
 import React from 'react';
 import './Components.css';
+import { useCallback, useRef, useEffect, useState } from "react";
 
-
-function BGCard(props) {
-    return(
-        <div style={props.style} className="card">
-            {props.children}
-        </div>
-    );
+class BGCard extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            clicked: false
+          };
+    }
+    render() {
+        return(
+         <div style={this.props.style} className={this.props.type}>{this.props.children}</div>)
+    }
 }
 
 export default BGCard;

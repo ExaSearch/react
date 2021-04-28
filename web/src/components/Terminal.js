@@ -3,36 +3,36 @@ import BGCard from './Card';
 import './Components.css';
 import { useCallback, useRef, useEffect, useState } from "react";
 import Header from './Layout/Header';
+import './Layout/layout.css';
 
 function SearchBox(props) {
-
-    const [inprogressQuery, setInprogressQuery] = useState(props.query);
-  
     const handleChange = (e) => {
-      setInprogressQuery(e.target.value.replace(/\n|\r/g, ""));
+      props.setInprogressQuery(e.target.value.replace(/\n|\r/g, ""));
+      props.setRawQuery(e.target.value.replace(/\n|\r/g, ""));
+      console.log("handleChange setting inprog: "+e.target.value.replace(/\n|\r/g, ""));
     }
-  
+
     useEffect(() => {
-      setInprogressQuery(props.query)
+      props.setInprogressQuery(props.query)
     }, [props.query]);
   
     const submit = () => {
-      if (!inprogressQuery.includes("*")) {
+      console.log("submit was passed inprog: "+props.inprogressQuery);
+      if (!props.inprogressQuery.includes("*")) {
         window.alert("query must contain *");
         return;
       }
-      props.setQuery(inprogressQuery.replace("*", "<mask>"));
+      props.setQuery(props.inprogressQuery.replace("*", "<mask>"));
     }
   
     return (
     <div className="textAreaPrefix">
-      <textarea placeholder="e.g. The best search engine is *" value={inprogressQuery} onChange={handleChange} onKeyUp={(e) => (e.key === "Enter" ? submit() : 0)}/>
+      <textarea placeholder="e.g. The best search engine is *" value={props.query} onChange={handleChange} onKeyUp={(e) => (e.key === "Enter" ?  submit() : 0)}/>
     </div>
     );
-  }
+}
   
-  function SearchResults(props) {
-    console.log(props);
+function SearchResults(props) {
     return (
     <div className="resultsContainer">
       <div className="outputText">output:</div>
@@ -43,11 +43,75 @@ function SearchBox(props) {
       })}
       </div>
     </div>);
+}
+
+const libraryCardStyles = {
+  height: 'fit-content',
+  width: 'fit-content',
+  textAlign: 'left',
+  padding: '16px 16px 16px 16px',
+  marginBottom: '20px',
+  fontSize: '1.13vw',
+};
+
+const buttonStyles = {
+  height: 'fit-content',
+  width: 'fit-content',
+  border: 'none',
+  textAlign: 'left',
+  padding: 'none',
+  float: 'left',
+  background: 'none',
+  fontSize: '1.13vw',
+  color: '#727170',
+  fontFamily: 'Inconsolata'
+}
+
+const libraryItems = [
+  {query: "machine learning is *", key: 1},
+  {query: "test *", key: 2},,
+  {query: "hi is *", key: 3},
+  {query: "test *", key: 4},
+]; 
+
+class Library extends React.Component {
+  constructor(props) {
+    super(props);
+    this.btnTapped = this.btnTapped.bind(this);
+  }
+  btnTapped(foo){
+    this.props.setQuery(foo.replace("*","<mask>"));
   }
 
+  render() {
+    return (
+      <div className="libraryColumn">
+        {
+          libraryItems.map((libraryItem) => (
+              this.props.query == libraryItem ? (
+                <button key={libraryItem.key} style={buttonStyles} onClick={this.props.setQuery("")}>
+                  <BGCard style={libraryCardStyles} type={"clickedCard"}>{libraryItem.query}</BGCard>
+                </button>
+              ) : (
+                <button key={libraryItem.key} style={buttonStyles} onClick={ () => this.btnTapped(libraryItem.query) }>
+                  <BGCard style={libraryCardStyles} type={"card"}>{libraryItem.query}</BGCard>
+                </button>
+              )
+          ))
+        }
+      </div>
+    )
+  }
+} 
+
 function Terminal(props) {
-    const [query, setQuery] = useState("");
-    const [results, setResults] = useState([]);
+  const [query, setQuery] = useState("");
+  const [results, setResults] = useState([]);
+  const [inprogressQuery, setInprogressQuery] = useState(query);
+
+  useEffect(() => {
+    console.log('inprog changed to: ', inprogressQuery);
+ }, [inprogressQuery]);
 
   const searchAndSetQuery = (q) => {
     if (!q.includes("<mask>")) {
@@ -57,6 +121,8 @@ function Terminal(props) {
     setQuery(q.replace("<mask>","*"));
     let params = new URLSearchParams();
     params.set('q', q);
+    // setInprogressQuery(q);
+    console.log("inprogressquery: " +inprogressQuery);
     const url = "https://exa.sh/api/search?" + params.toString();
     console.log(url);
     fetch(url)
@@ -87,16 +153,18 @@ function Terminal(props) {
     searchAndSetQuery(q);
   }
     return(
-        <BGCard style={{width: '1200px', height: '850px',  margin: '30px 20px 0px 30px'}}>
+      <div className="terminalLayout">
+        <BGCard style={{width: '100%', height: '100%', }} type={"card"}>
           <Header style={{margin: '24px 0px 0px 28px' }} />
           <div className="instructions">
             Give us a prompt with a * in it, we’ll predict which URLs best fill that blank
           </div>
-          {/* <div className='divider2'></div> */}
-          <SearchBox query={query} setQuery={setQueryParam}/>
+          <SearchBox query={query} setQuery={setQueryParam} setRawQuery={setQuery} setInprogressQuery={setInprogressQuery} inprogressQuery={inprogressQuery}/>
           <div className='divider'></div>
           <SearchResults results={results}/>    
         </BGCard>
+        <Library setQuery={setQueryParam}/>
+      </div>
     );
 }
 

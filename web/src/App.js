@@ -1,11 +1,11 @@
 import { useCallback, useRef, useEffect, useState } from "react";
 import './App.css';
-import Layout from "./components/Layout/Layout";
+import Terminal from './components/Terminal';
 
 function App() {
   return (
     <div className="App">
-      <Layout></Layout>
+      <Terminal/>
     </div>
   );
 }
