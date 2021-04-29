@@ -2,7 +2,7 @@
 - [x] Home page
 - [ ] Search results page
 - [ ] Make it responsive on web & mobile
-- [ ] Add prompt templates functionality
+- [x] Add prompt templates functionality
 - [ ] New UX for * in textbox
 
 ## Available Scripts
