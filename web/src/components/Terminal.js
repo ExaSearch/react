@@ -67,20 +67,18 @@ const buttonStyles = {
 
 const libraryItems = [
   {query: "machine learning is *", key: 1},
-  {query: "test *", key: 2},,
-  {query: "hi is *", key: 3},
+  {query: "self-supervised learning is *", key: 2},,
+  {query: "prompts are hard to think of because *", key: 3},
   {query: "test *", key: 4},
 ]; 
 
 class Library extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {selectedKey: -1}
     this.btnTapped = this.btnTapped.bind(this);
   }
   btnTapped(foo){
     this.props.setQuery(foo.query.replace("*","<mask>"));
-    this.setState({selectedKey: foo.key});
   }
 
   render() {
@@ -88,7 +86,7 @@ class Library extends React.Component {
       <div className="libraryColumn">
         {
           libraryItems.map((libraryItem) => (
-            this.state.selectedKey == libraryItem.key ? 
+            this.props.query == libraryItem.query ? 
                 (<button key={libraryItem.key} style={buttonStyles} onClick={() => this.btnTapped(libraryItem)}>
                   <BGCard style={libraryCardStyles} type={"clickedCard"}>{libraryItem.query}</BGCard>
                 </button>) : (
@@ -155,7 +153,7 @@ function Terminal(props) {
           <div className='divider'></div>
           <SearchResults results={results}/>    
         </BGCard>
-        <Library setQuery={setQueryParam}/>
+        <Library query={query} setQuery={setQueryParam}/>
       </div>
     );
 }
