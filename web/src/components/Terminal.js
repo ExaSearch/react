@@ -9,7 +9,6 @@ function SearchBox(props) {
     const handleChange = (e) => {
       props.setInprogressQuery(e.target.value.replace(/\n|\r/g, ""));
       props.setRawQuery(e.target.value.replace(/\n|\r/g, ""));
-      console.log("handleChange setting inprog: "+e.target.value.replace(/\n|\r/g, ""));
     }
 
     useEffect(() => {
@@ -17,7 +16,6 @@ function SearchBox(props) {
     }, [props.query]);
   
     const submit = () => {
-      console.log("submit was passed inprog: "+props.inprogressQuery);
       if (!props.inprogressQuery.includes("*")) {
         window.alert("query must contain *");
         return;
@@ -77,10 +75,12 @@ const libraryItems = [
 class Library extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {selectedKey: -1}
     this.btnTapped = this.btnTapped.bind(this);
   }
   btnTapped(foo){
-    this.props.setQuery(foo.replace("*","<mask>"));
+    this.props.setQuery(foo.query.replace("*","<mask>"));
+    this.setState({selectedKey: foo.key});
   }
 
   render() {
@@ -88,15 +88,14 @@ class Library extends React.Component {
       <div className="libraryColumn">
         {
           libraryItems.map((libraryItem) => (
-              this.props.query == libraryItem ? (
-                <button key={libraryItem.key} style={buttonStyles} onClick={this.props.setQuery("")}>
+            this.state.selectedKey == libraryItem.key ? 
+                (<button key={libraryItem.key} style={buttonStyles} onClick={() => this.btnTapped(libraryItem)}>
                   <BGCard style={libraryCardStyles} type={"clickedCard"}>{libraryItem.query}</BGCard>
-                </button>
-              ) : (
-                <button key={libraryItem.key} style={buttonStyles} onClick={ () => this.btnTapped(libraryItem.query) }>
+                </button>) : (
+                  <button key={libraryItem.key} style={buttonStyles} onClick={() => this.btnTapped(libraryItem)}>
                   <BGCard style={libraryCardStyles} type={"card"}>{libraryItem.query}</BGCard>
                 </button>
-              )
+                )
           ))
         }
       </div>
@@ -109,20 +108,13 @@ function Terminal(props) {
   const [results, setResults] = useState([]);
   const [inprogressQuery, setInprogressQuery] = useState(query);
 
-  useEffect(() => {
-    console.log('inprog changed to: ', inprogressQuery);
- }, [inprogressQuery]);
-
   const searchAndSetQuery = (q) => {
     if (!q.includes("<mask>")) {
       return;
     }
-    console.log("do search");
     setQuery(q.replace("<mask>","*"));
     let params = new URLSearchParams();
     params.set('q', q);
-    // setInprogressQuery(q);
-    console.log("inprogressquery: " +inprogressQuery);
     const url = "https://exa.sh/api/search?" + params.toString();
     console.log(url);
     fetch(url)

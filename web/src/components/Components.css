@@ -19,8 +19,8 @@
 
 .clickedCard {
   border-radius: 10px;
-  border: 1px solid red;
-  background: rgba(0, 0, 0, 0.025);
+  border: 1px solid #D39A71;
+  background: rgba(211, 154, 113, 0.4);
   box-shadow: 0px 8px 20px rgba(202, 202, 202, 0.9);
 }
 
