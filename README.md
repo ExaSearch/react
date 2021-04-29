@@ -1,8 +1,9 @@
 ## Todo
-- [x] Home page
-- [ ] Search results page
-- [ ] Make it responsive on web & mobile
-- [x] Add prompt templates functionality
+- [x] Search + Results page
+- [x] Library of prompts for Search + Results page
+- [ ] Search only page
+- [ ] Library of prompts for Search only page
+- [ ] Make it all responsive on web & mobile
 - [ ] New UX for * in textbox
 
 ## Available Scripts
