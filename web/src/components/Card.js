@@ -1,6 +1,5 @@
 import React from 'react';
 import './Components.css';
-import { useCallback, useRef, useEffect, useState } from "react";
 
 class BGCard extends React.Component {
     constructor(props) {

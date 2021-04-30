@@ -1,13 +1,18 @@
-import { useCallback, useRef, useEffect, useState } from "react";
 import './App.css';
-import Terminal from './components/Terminal';
+import ResultsPage from './pages/resultsPage/ResultsPage';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import SearchPage from "./pages/searchPage/SearchPage";
 
 function App() {
   return (
     <div className="App">
-      <Terminal/>
+      <Router>
+       <Route path="/" exact component={SearchPage} />
+        <Route path="/search"  component={ResultsPage} />
+      </Router>
     </div>
   );
 }
 
 export default App;
+
