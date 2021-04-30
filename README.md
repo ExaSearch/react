@@ -1,7 +1,7 @@
 ## Todo
 - [x] Search + Results page
 - [x] Library of prompts for Search + Results page
-- [ ] Search only page
+- [x] Search only page
 - [ ] Library of prompts for Search only page
 - [ ] Make it all responsive on web & mobile
 - [ ] New UX for * in textbox
