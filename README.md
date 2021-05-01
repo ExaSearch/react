@@ -2,8 +2,9 @@
 - [x] Search + Results page
 - [x] Library of prompts for Search + Results page
 - [x] Search only page
-- [ ] Library of prompts for Search only page
+- [x] Library of prompts for Search only page
 - [ ] Make it all responsive on web & mobile
+- [ ] Back button should go back to last entered query
 - [ ] New UX for * in textbox
 
 ## Available Scripts
