@@ -24,11 +24,12 @@ html, body {
 }
 
 body {
-  background-color: #EDEDED;
+  background-color: #EDEBEB;
   color: #727170;
   font-family: 'Inconsolata';
   font-size: 14px;
   overflow: hidden;
+  
 }
 
 .searchResult {
